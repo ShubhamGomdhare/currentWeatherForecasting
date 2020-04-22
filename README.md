@@ -1,7 +1,7 @@
 # currentWeatherForecasting
 A web application which detects current weather conditions around the globe.
 
-1. This web application uses OpenWeatherMap API which provides current weather data around the globe.
+1. This web application uses OpenWeatherMap API which provides current weather conditions around the globe.
 
 
 HOW TO USE THIS WEB APPLICATION?
