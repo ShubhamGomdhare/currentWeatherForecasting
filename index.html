@@ -1,0 +1,234 @@
+<!-- This code is penned by Shubham Gomdhare(sgwthost@gmail.com). -->
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+	<marquee class="marq" bgcolor = "LightGray" direction = "left" loop=""  > 
+        <div class="head1">Current  Weather  Forecasting  Around  the  Globe</div> 
+        <div class="head2"></div> 
+    </marquee> 
+<canvas id="c"></canvas>
+	<div class="container">
+            <h2><i >Weather Forecast</i></h2>
+				<form id="location-form">
+					<input type="text" id="place" placeholder="Enter any city"><br>
+					<button id="submit">Search</button>
+				</form>
+            <div id="show-div" class="centerDiv"></div>
+            <div id="message-div" class="centerMsg"></div>
+    </div>
+<div id="chartContainerTemp" align="center" style="height: 370px; width: 100%;"></div>
+<div id="chartContainerHum" align="center" style="height: 370px; width: 100%;"></div>
+ <script>
+ var val1;
+ var val2;
+ var val3;
+ var val4;
+ var val5;
+ var val6;
+ var hum1,hum2,hum3,hum4,hum5,hum6;
+ var pracBtn = document.getElementById("submit");
+var showSome = document.getElementById("show-div");
+var locationForm = document.getElementById('location-form');
+var locale = document.getElementById('place');
+var place;
+var messageDiv = document.getElementById('message-div');
+var weathKey = localStorage.getItem("weathKey");
+var weatherUrl;
+
+pracBtn.addEventListener('click', function(event){
+  // var location = locale.value;
+  // var weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&APPID=${weathKey}`;
+  var weathKey = '781de6c5c66984e0a87e51468d91d557';
+  place = locale.value;
+  weatherUrl = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${place}&units=metric&APPID=781de6c5c66984e0a87e51468d91d557`;
+  event.preventDefault();
+//  showSome.innerHTML = '';
+  getData();
+});
+
+
+function getData(){
+fetch(weatherUrl)
+  .then(function(response) {
+    return response.json();
+    })
+  .then(function(data) {
+    var localTemp = data.list[0].main.temp;
+	var localPressure = data.list[0].main.pressure;
+	var shubh = data.list[0].main.humidity;
+	var gm = data.list[0].weather[0].description;
+	var txt = data.list[0].dt_txt;
+	
+	var localTemp1 = data.list[1].main.temp;
+	var localPressure1 = data.list[1].main.pressure;
+	var shubh1 = data.list[1].main.humidity;
+	var gm1 = data.list[1].weather[0].description;
+	var txt1 = data.list[7].dt_txt;
+	
+	var localTemp2 = data.list[2].main.temp;
+	var localPressure2 = data.list[2].main.pressure;
+	var shubh2 = data.list[2].main.humidity;
+	var gm2 = data.list[2].weather[0].description;
+	var txt2 = data.list[15].dt_txt;
+	
+	var localTemp3 = data.list[3].main.temp;
+	var localPressure3 = data.list[3].main.pressure;
+	var shubh3 = data.list[3].main.humidity;
+	var gm3 = data.list[3].weather[0].description;
+	var txt3 = data.list[23].dt_txt;
+	
+	var localTemp4 = data.list[4].main.temp;
+	var localPressure4 = data.list[4].main.pressure;
+	var shubh4 = data.list[4].main.humidity;
+	var gm4 = data.list[4].weather[0].description;
+	var txt4 = data.list[31].dt_txt;
+	
+	var localTemp5 = data.list[5].main.temp;
+	var localPressure5 = data.list[5].main.pressure;
+	var shubh5 = data.list[5].main.humidity;
+	var gm5 = data.list[5].weather[0].description;
+	var txt5 = data.list[39].dt_txt;
+	
+  val1 = localTemp;
+  val2 = localTemp1;
+  val3 = localTemp2;
+  val4 = localTemp3;
+  val5 = localTemp4;
+  val6 = localTemp5;
+	hum1 = shubh;
+	hum2 = shubh1;
+	hum3 = shubh2;
+	hum4 = shubh3;
+	hum5 = shubh4;
+	hum6 = shubh5;
+    showSome.innerHTML = `
+	<div class="row">
+		<div class="col">
+					<h4>Temperature : ${localTemp}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm}</h4>
+					<h4>Pressure : ${localPressure}&nbsp;Pa</h4>
+                    <h4>Time : ${txt}</h4>	
+		</div>
+
+		<div class="col">
+					<h4>Temperature : ${localTemp1}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh1}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm1}</h4>
+					<h4>Pressure : ${localPressure1}&nbsp;Pa</h4>
+                    <h4>Time : ${txt1}</h4>	
+		</div>
+		
+		<div class="col">
+					<h4>Temperature : ${localTemp2}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh2}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm2}</h4>
+					<h4>Pressure : ${localPressure2}&nbsp;Pa</h4>
+                    <h4>Time : ${txt2}</h4>	
+		</div>
+		
+		<div class="col">
+					<h4>Temperature : ${localTemp3}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh3}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm3}</h4>
+					<h4>Pressure : ${localPressure3}&nbsp;Pa</h4>
+                    <h4>Time : ${txt3}</h4>	
+		</div>
+		
+		<div class="col">
+					<h4>Temperature : ${localTemp4}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh4}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm4}</h4>
+					<h4>Pressure : ${localPressure4}&nbsp;Pa</h4>
+                    <h4>Time : ${txt4}</h4>	
+		</div>
+		
+		<div class="col">
+					<h4>Temperature : ${localTemp5}&nbsp;C</h4>
+                    <h4>Humidity : ${shubh5}&nbsp;&#37;</h4>  
+					<h4>Precipitation : ${gm5}</h4>
+					<h4>Pressure : ${localPressure5}&nbsp;Pa</h4>
+                    <h4>Time Zone : ${txt5}</h4>	
+		</div>
+	</div>					   
+                          `
+    graphTemp();
+	graphHum();
+  })
+  .catch(error => setErrorMessage())
+ 
+	
+
+}
+
+function setErrorMessage(){
+  messageDiv.classList.add("message")
+  messageDiv.innerText = `Error - Please check the location entered`;
+  locale.value = '';
+
+    setTimeout(function(){
+      messageDiv.innerHTML = '';
+      messageDiv.classList.remove('message');
+    }, 2000);
+}
+
+function graphTemp() {
+
+var chart1 = new CanvasJS.Chart("chartContainerTemp", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Temperature (next 5 days)"
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{        
+		type: "line",
+      	indexLabelFontSize: 16,
+		dataPoints: [
+			{ y: val1 },
+			{ y: val2 },
+			{ y: val3 },
+			{ y: val4 },
+			{ y: val5 },
+			{ y: val6 }
+		]
+	}]
+});
+chart1.render();
+
+}
+function graphHum() {
+
+var chart2 = new CanvasJS.Chart("chartContainerHum", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Humidity (next 5 days)"
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{        
+		type: "line",
+      	indexLabelFontSize: 16,
+		dataPoints: [
+			{ y: hum1 },
+			{ y: hum2 },
+			{ y: hum3 },
+			{ y: hum4 },
+			{ y: hum5 },
+			{ y: hum6 }
+		]
+	}]
+});
+chart2.render();
+
+}
+ </script>
+ </body>
+</html>
