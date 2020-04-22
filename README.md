@@ -10,3 +10,8 @@ HOW TO USE THIS WEB APPLICATION?
 2. You will get current weather data as well as it will show you next 5 days weather conditions.
 3. Also there are two graphs which shows next 5 days temperature and humidity in graphical format.
 4. This graphs are CanvasJS simple graph JAVASCRIPT API.
+
+You can visit following link for live demo : 
+
+https://shubham-gomdhare.github.io/
+
